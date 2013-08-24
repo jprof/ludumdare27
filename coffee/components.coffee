@@ -34,5 +34,32 @@ Crafty.c 'Choppa',
 
 Crafty.c 'Timer',
   init: ()->
-    @requires '2D, DOM, Color'
-    return @
+    @requires '2D, DOM, Color, Text'
+    @endTime = @_getEndTime 10
+    @textColor "Blue"
+    @bind "EnterFrame", ()->
+      timeLeft = @_getTimeLeft()
+      if timeLeft <= 0
+        @text "0.0"
+        @levelOver()
+      else
+        d = new Date(timeLeft)
+        @text "" + d.getSeconds() + "." + d.getMilliseconds()
+
+  _getEndTime: (val)->
+    # Return time from UNIX epoch, val seconds into the future.
+    currentTime = new Date().getTime()
+    endTime = currentTime + (1000 * val)
+    return endTime
+
+  _getTimeLeft: ()->
+    # Get the difference in time from @endTime to the current time.
+    # Returned as time from UNIX epoch.
+    currentTime = new Date().getTime()
+    return @endTime - currentTime
+
+  levelOver: ()->
+    # You lost!
+    @unbind "EnterFrame"
+    Crafty("Player").color "pink"
+

@@ -13,6 +13,10 @@ window.Game =
     obstacle.attr { x: 200, y: 200, w: 60, h: 60 }
     obstacle.color "blue"
 
+    timer = Crafty.e "Timer"
+    timer.attr { x: @STAGE_WIDTH - 70, y: 20, w: 200, h:100 }
+    timer.textFont { family: "Arial", size: "20px" }
+    timer.textColor "red"
     return
 
     # Load assets here! Something like this:
