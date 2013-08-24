@@ -8,6 +8,11 @@ window.Game =
     player.attr { x: 10, y: 10, w: 10, h:10 }
     player.fourway 5
     player.color "red"
+
+    obstacle = Crafty.e "Obstacle"
+    obstacle.attr { x: 60, y: 60, w: 20, h: 20 }
+    obstacle.color "blue"
+
     return
 
     # Load assets here! Something like this:
