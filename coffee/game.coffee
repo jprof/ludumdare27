@@ -10,7 +10,7 @@ window.Game =
     player.color "red"
 
     obstacle = Crafty.e "Obstacle"
-    obstacle.attr { x: 60, y: 60, w: 20, h: 20 }
+    obstacle.attr { x: 200, y: 200, w: 60, h: 60 }
     obstacle.color "blue"
 
     return
