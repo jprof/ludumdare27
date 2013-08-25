@@ -1,6 +1,6 @@
 Crafty.c 'Actor',
   init: ()->
-    @requires '2D, Canvas, Collision, Color'
+    @requires '2D, Canvas, Collision'
     return @
 
 Crafty.c 'Obstacle',
@@ -25,7 +25,7 @@ Crafty.c 'Obstacle',
 
 Crafty.c 'Bullet',
   init: ()->
-    @requires 'Actor'
+    @requires '2D, Canvas, Collision, Color'
     return @
 
   fire: (start_x,start_y,target_x,target_y,speed_x,speed_y) ->
@@ -96,7 +96,6 @@ Crafty.c 'Timer',
     # You lost!
     #clearInterval @enemyInterval
     @unbind "EnterFrame"
-    Crafty("Player").color "pink"
 
     return @
 

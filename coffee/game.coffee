@@ -37,13 +37,11 @@ window.Game =
 
       enemy1 = Crafty.e "Enemy, Soldier"
       enemy1.attr { x: 300, y: 20, w: 46, h: 63 }
-      enemy1.color "white"
       moveEnemy = ()-> enemy1.verticalPatrol enemy1.y
       enemy1.bind "EnterFrame", moveEnemy
 
       enemy2 = Crafty.e "Enemy, Soldier"
       enemy2.attr { x: 100, y: 50, w: 46, h: 63 }
-      enemy2.color "white"
       moveEnemy = ()-> enemy2.horizontalPatrol enemy2.x
       enemy2.bind "EnterFrame", moveEnemy
 
