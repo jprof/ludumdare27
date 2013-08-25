@@ -36,7 +36,7 @@ Crafty.c 'Bullet',
     @speed_y = speed_y
     @x = start_x
     @y = start_y
-    @w = @h = 1 #hard code it for now
+    @w = @h = 2 #hard code it for now
    
     
     @ang = Math.atan2( (@target_y - @start_y) , (@target_x - @start_x) )
