@@ -10,7 +10,7 @@ Crafty.c 'Enemy',
   
   horizontalPatrol: (x)->
     # Random horizontal patrolling
-    console.log "I'm patrolling horizontally!"
+    #console.log "I'm patrolling horizontally!"
     if @switchDirX == 0
       @x+=5
       @countX++
@@ -25,7 +25,7 @@ Crafty.c 'Enemy',
 
   verticalPatrol: (y)->
     # Random vertical patrolling
-    console.log "I'm patrolling vertically!"
+    #console.log "I'm patrolling vertically!"
     if @switchDirY == 0
       #@y += ((Math.random()*10) + 1)
       @y+=5

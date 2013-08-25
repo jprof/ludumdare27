@@ -53,7 +53,6 @@ Crafty.c 'Bullet',
     @y += @speed_y * @sinAng
     return
 
-
 Crafty.c 'Goal',
   init: ()->
     @requires 'Actor, Choppa1'
