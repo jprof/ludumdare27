@@ -24,14 +24,14 @@ Crafty.c 'TheHero',
     @playerState = @PlayerDirections.right
     @moving = false
 
-    @animate('moveRight', 0, 0, 1)
-    @animate('moveDown', 0, 1, 2)
-    @animate('moveLeft', 0, 0, 1)
-    @animate('moveUp', 0, 2, 2)
-    @animate('moveUpRight', 0, 3, 1)
-    @animate('moveUpLeft', 0, 4, 1)
-    @animate('moveDownLeft', 0, 5, 1)
-    @animate('moveDownRight', 0, 6, 1)
+    @animate 'moveRight', 0, 0, 1
+    @animate 'moveDown', 0, 1, 2
+    @animate 'moveLeft', 0, 0, 1
+    @animate 'moveUp', 0, 2, 2
+    @animate 'moveUpRight', 0, 3, 1
+    @animate 'moveUpLeft', 0, 4, 1
+    @animate 'moveDownLeft', 0, 5, 1
+    @animate 'moveDownRight', 0, 6, 1
 
     @bind "NewDirection", @_newDirection
     @bind "EnterFrame", @_enterFrameActive
