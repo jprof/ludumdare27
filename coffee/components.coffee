@@ -75,9 +75,18 @@ Crafty.c 'ViewportMouseListener',
     return @
 
   _mouseClick: (e) ->
+    Player = Crafty("Player")
+    playerCenterX = Player.x + Player.w / 2
+    playerCenterY = Player.y + Player.h / 2
+
+    #adjust for fact that Crafty stage won't start at window's 0,0
+    targX = e.x - Crafty.stage.x
+    targY = e.y - Crafty.stage.y
+
     console.log "Clicked the mouse at (" + e.x + ","+e.y+")"
+    console.log "Target at (" + targX + ","+targY+")"
     bullet = Crafty.e "Bullet"
     bullet.color "white"
-    bullet.fire @x, @y, e.x, e.y, 5, 5
+    bullet.fire playerCenterX, playerCenterY, targX, targY, 5, 5
 
     return
