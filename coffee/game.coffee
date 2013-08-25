@@ -13,6 +13,16 @@ window.Game =
     obstacle.attr { x: 200, y: 200, w: 60, h: 60 }
     obstacle.color "blue"
 
+    mouseClickListener = Crafty.e "ViewportMouseListener"
+    mouseClickListener.attr {x: 0, y:0, w: Game.STAGE_WIDTH, h: Game.STAGE_HEIGHT}
+    mouseClickListener.bind 'Click', (e) ->
+      console.log "Clicked the mouse at (" + e.x + ","+e.y+")"
+      return
+    mouseClickListener.areaMap [0,0],
+                               [Game.STAGE_WIDTH, 0],
+                               [Game.STAGE_WIDTH,  Game.STAGE_HEIGHT],
+                               [0, Game.STAGE_HEIGHT]
+
     return
 
     # Load assets here! Something like this:
