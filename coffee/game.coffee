@@ -1,8 +1,8 @@
 window.Game =
+  STAGE_WIDTH: 800
+  STAGE_HEIGHT: 600
   start: ()->
-    @STAGE_WIDTH = 800
-    @STAGE_HEIGHT = 600
-    Crafty.init @STAGE_WIDTH, @STAGE_HEIGHT
+    Crafty.init Game.STAGE_WIDTH, Game.STAGE_HEIGHT
     Crafty.background "green"
 
     Crafty.sprite(46, 63, 'assets/images/arnold.png', {
@@ -30,6 +30,22 @@ window.Game =
       obstacle = Crafty.e "Goal"
       obstacle.attr { x: 400, y: 400, w: 121, h: 52 }
 
+      enemy1 = Crafty.e "Enemy, Soldier"
+      enemy1.attr { x: 300, y: 20, w: 46, h: 63 }
+      enemy1.color "white"
+      moveEnemy = ()-> enemy1.verticalPatrol enemy1.y
+      enemy1.bind "EnterFrame",moveEnemy
+
+      enemy2 = Crafty.e "Enemy, Soldier"
+      enemy2.attr { x: 100, y: 50, w: 46, h: 63 }
+      enemy2.color "white"
+      moveEnemy = ()-> enemy2.horizontalPatrol enemy2.x
+      enemy2.bind "EnterFrame",moveEnemy
+
+      obstacle = Crafty.e "Obstacle"
+      obstacle.attr { x: 200, y: 200, w: 60, h: 60 }
+      obstacle.color "blue"
+
       enemy = Crafty.e "Enemy, Soldier"
       enemy.attr { x: 300, y: 300, w: 46, h: 63 }
 
@@ -37,6 +53,16 @@ window.Game =
       timer.attr { x: 800 - 70, y: 20, w: 200, h:100 }
       timer.textFont { family: "Arial", size: "20px" }
       timer.textColor "red"
+
+      mouseClickListener = Crafty.e "ViewportMouseListener"
+      mouseClickListener.attr {x: 0, y:0, w: Game.STAGE_WIDTH, h: Game.STAGE_HEIGHT}
+      mouseClickListener.bind 'Click', (e) ->
+        console.log "Clicked the mouse at (" + e.x + ","+e.y+")"
+        return
+      mouseClickListener.areaMap [0,0],
+                                 [Game.STAGE_WIDTH, 0],
+                                 [Game.STAGE_WIDTH,  Game.STAGE_HEIGHT],
+                                 [0, Game.STAGE_HEIGHT]
       return
 
     # Load assets here! Something like this:
