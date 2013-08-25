@@ -27,9 +27,9 @@ Crafty.c 'Bullet',
     @requires 'Actor'
     return @
 
-Crafty.c 'Choppa',
+Crafty.c 'Goal',
   init: ()->
-    @requires 'Actor'
+    @requires 'Actor, Choppa1'
     return @
 
 Crafty.c 'Timer',

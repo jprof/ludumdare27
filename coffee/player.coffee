@@ -1,6 +1,6 @@
 Crafty.c 'Player',
   init: () ->
-    @requires 'Actor, Fourway'
+    @requires 'Actor, Fourway, TheHero'
     return
 
   die: () ->
