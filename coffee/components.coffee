@@ -62,3 +62,22 @@ Crafty.c 'Timer',
   init: ()->
     @requires '2D, DOM, Color'
     return @
+
+# so we can click to shoot
+Crafty.c 'ViewportMouseListener',
+  init: () ->
+    @requires '2D, DOM, Mouse'
+    @areaMap [0,0],
+             [Game.STAGE_WIDTH, 0],
+             [Game.STAGE_WIDTH,  Game.STAGE_HEIGHT],
+             [0, Game.STAGE_HEIGHT]
+    @bind 'Click', @_mouseClick
+    return @
+
+  _mouseClick: (e) ->
+    console.log "Clicked the mouse at (" + e.x + ","+e.y+")"
+    bullet = Crafty.e "Bullet"
+    bullet.color "white"
+    bullet.fire @x, @y, e.x, e.y, 5, 5
+
+    return
