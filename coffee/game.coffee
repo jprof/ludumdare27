@@ -9,6 +9,18 @@ window.Game =
     player.fourway 5
     player.color "red"
 
+    enemy1 = Crafty.e "Enemy"
+    enemy1.attr { x: 300, y: 20, w: 10, h: 10 }
+    enemy1.color "white"
+    moveEnemy = ()-> enemy1.verticalPatrol enemy1.y
+    enemy1.bind "EnterFrame",moveEnemy
+
+    enemy2 = Crafty.e "Enemy"
+    enemy2.attr { x: 100, y: 50, w: 10, h: 10 }
+    enemy2.color "white"
+    moveEnemy = ()-> enemy2.horizontalPatrol enemy2.x
+    enemy2.bind "EnterFrame",moveEnemy
+
     obstacle = Crafty.e "Obstacle"
     obstacle.attr { x: 200, y: 200, w: 60, h: 60 }
     obstacle.color "blue"

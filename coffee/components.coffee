@@ -3,11 +3,6 @@ Crafty.c 'Actor',
     @requires '2D, Canvas, Collision, Color'
     return @
 
-Crafty.c 'Enemy',
-  init: ()->
-    @requires 'Actor'
-    return @
-
 Crafty.c 'Obstacle',
   init: ()->
     @requires 'Actor'
@@ -92,6 +87,7 @@ Crafty.c 'Timer',
 
   levelOver: ()->
     # You lost!
+    #clearInterval @enemyInterval
     @unbind "EnterFrame"
     Crafty("Player").color "pink"
 
