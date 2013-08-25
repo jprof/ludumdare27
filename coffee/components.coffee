@@ -13,6 +13,7 @@ Crafty.c 'Obstacle',
     @requires 'Actor'
 
     @onHit 'Player', @_onHit
+    @onHit 'Bullet', @_bulletHitsObstacle
     return @
 
   _onHit: (colliders) ->
@@ -20,6 +21,11 @@ Crafty.c 'Obstacle',
       collider.obj.x += -1 * collider.obj._movement.x
       collider.obj.y += -1 * collider.obj._movement.y
 
+    return
+  
+  _bulletHitsObstacle: (bullets) ->
+    for bullet in bullets
+      bullet.obj.destroy()
     return
 
 Crafty.c 'Bullet',
@@ -51,7 +57,7 @@ Crafty.c 'Bullet',
     @x += @speed_x * @cosAng
     @y += @speed_y * @sinAng
     return
-    
+
 
 Crafty.c 'Choppa',
   init: ()->
