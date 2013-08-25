@@ -55,8 +55,16 @@ Crafty.c 'Bullet',
 
 Crafty.c 'Goal',
   init: ()->
-    @requires 'Actor, Choppa1'
+    @requires 'Actor'
     return @
+
+Crafty.c 'Choppa',
+  init: ()->
+    @requires 'ChoppaSprite, SpriteAnimation'
+    @animate 'ChoppaSpin', 0, 0, 3
+    @animate 'ChoppaSpin', 10, -1
+    return
+
 
 Crafty.c 'Timer',
   init: ()->

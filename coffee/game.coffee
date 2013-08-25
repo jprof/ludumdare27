@@ -14,10 +14,15 @@ window.Game =
     })
 
     Crafty.sprite(121, 50, 'assets/images/choppa.png', {
-      Choppa1: [0, 0]
-      Choppa2: [1, 0]
-      Choppa3: [2, 0]
-      Choppa4: [3, 0]
+      ChoppaSprite: [0, 0]
+    })
+
+    Crafty.sprite(101, 104, 'assets/images/tree.png', {
+      TreeSprite: [0, 0]
+    })
+
+    Crafty.sprite(75, 75, 'assets/images/crate.png', {
+      CrateSprite: [0, 0]
     })
 
     Crafty.scene "load"
@@ -27,8 +32,8 @@ window.Game =
       player.attr { x: 10, y: 10, w: 46, h:63 }
       player.fourway 2
 
-      obstacle = Crafty.e "Goal"
-      obstacle.attr { x: 400, y: 400, w: 121, h: 52 }
+      choppa = Crafty.e "Goal, Choppa"
+      choppa.attr { x: 400, y: 400, w: 121, h: 52 }
 
       enemy1 = Crafty.e "Enemy, Soldier"
       enemy1.attr { x: 300, y: 20, w: 46, h: 63 }
@@ -42,9 +47,11 @@ window.Game =
       moveEnemy = ()-> enemy2.horizontalPatrol enemy2.x
       enemy2.bind "EnterFrame", moveEnemy
 
-      obstacle = Crafty.e "Obstacle"
-      obstacle.attr { x: 200, y: 200, w: 60, h: 60 }
-      obstacle.color "blue"
+      tree = Crafty.e "Obstacle, TreeSprite"
+      tree.attr { x: 200, y: 200, w: 101, h: 104 }
+
+      crate  = Crafty.e "Obstacle, CrateSprite"
+      crate.attr { x: 600, y:400 , w: 75, h: 75 }
 
       enemy = Crafty.e "Enemy, Soldier"
       enemy.attr { x: 300, y: 300, w: 46, h: 63 }
