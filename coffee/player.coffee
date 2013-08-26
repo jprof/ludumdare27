@@ -1,6 +1,20 @@
 Crafty.c 'Player',
   init: () ->
     @requires 'Actor, Fourway, TheHero'
+    @startX = @startY = 0
+    return
+
+  startPosition: (x, y)->
+    @startX = x
+    @startY = y
+    return
+
+  backToStart: ()->
+    @attr { x: @startX, y: @startY }
+    # attr worked here, but doing this didn't.
+    #   @x = @startX
+    #   @y = @starty
+    # Why?
     return
 
   die: () ->

@@ -1,40 +1,71 @@
 Crafty.c 'Enemy',
   init: ()->
     @requires 'Actor'
-    @countX = 0
-    @countY = 0
-    @switchDirX = 0
-    @switchDirY = 0
-    #@_patrol()
+    @onHit "Player", @_resetPlayer
     return
   
-  horizontalPatrol: (x)->
-    # Random horizontal patrolling
-    #console.log "I'm patrolling horizontally!"
+  # Move the player back to where they started when an enemy touches them.
+  _resetPlayer: (targets)->
+    for target in targets
+      target.obj.backToStart()
+    return
+    
+Crafty.c "HorizontalPatrol",
+  init: ()->
+    @countX = 0
+    @framesToPatrol = 25
+    @speed = 1
+    @switchDirX = 0
+
+    @countY = 0
+    @switchDirY = 0
+
+    @bind "EnterFrame", @_horizontalPatrol
+
+  patrolSpeed: (speed)->
+    @speed = speed
+
+  patrolFrames: (frames)->
+    @speed = frames
+
+  # Random horizontal patrolling
+  _horizontalPatrol: ()->
     if @switchDirX == 0
-      @x+=1
+      @x += @speed
       @countX++
-      if @countX >= 25
+      if @countX >= @framesToPatrol
         @switchDirX = 1
     else
-      @x-=1
+      @x -= @speed
       @countX--
       if @countX <= 0
         @switchDirX = 0
     return
 
-  verticalPatrol: (y)->
+Crafty.c "VerticalPatrol",
+  init: ()->
+    @countY = 0
+    @framesToPatrol = 25
+    @speed = 1
+    @switchDirY = 0
+
+    @bind "EnterFrame", @_verticalPatrol
+
+  patrolSpeed: (speed)->
+    @speed = speed
+
+  patrolFrames: (frames)->
+    @patrolFrames = frames
+
+  _verticalPatrol: ()->
     # Random vertical patrolling
-    #console.log "I'm patrolling vertically!"
     if @switchDirY == 0
-      #@y += ((Math.random()*10) + 1)
-      @y+=1
+      @y += @speed
       @countY++
-      if @countY >= 25
+      if @countY >= @framesToPatrol
         @switchDirY = 1
     else
-      #@y -= ((Math.random()*10) + 1)
-      @y-=1
+      @y -= @speed
       @countY--
       if @countY <= 0
         @switchDirY = 0
