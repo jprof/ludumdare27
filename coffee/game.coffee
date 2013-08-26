@@ -25,6 +25,14 @@ window.Game =
       CrateSprite: [0, 0]
     })
 
+    Crafty.sprite(800, 600, 'assets/images/pregame_splash1.png', {
+      TitleScreen: [0, 0]
+    })
+
+    Crafty.sprite(800, 600, 'assets/images/pregame_splash2.png', {
+      TitleScreen2: [0, 0]
+    })
+
     Crafty.scene "load"
 
     Crafty.scene "main", () ->

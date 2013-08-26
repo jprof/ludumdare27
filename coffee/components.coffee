@@ -126,3 +126,21 @@ Crafty.c 'ViewportMouseListener',
     bullet.fire playerCenterX, playerCenterY, targX, targY, 5, 5
 
     return
+
+Crafty.c 'Title',
+  init: ()->
+    @requires '2D, DOM, TitleScreen'
+    @attr { x: 0, y: 0, w: 800, h: 600 }
+    @frameCount = 0
+    @bind 'EnterFrame', ()->
+      if @frameCount > 15
+        @toggleScreen()
+        @frameCount = 0
+      @frameCount += 1
+
+  # Switch between the two sprites!
+  toggleScreen: ()->
+    @toggleComponent 'TitleScreen, TitleScreen2'
+
+    return @
+
