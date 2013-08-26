@@ -26,7 +26,7 @@ Crafty.c "HorizontalPatrol",
     @speed = speed
 
   patrolFrames: (frames)->
-    @speed = frames
+    @framesToPatrol = frames
 
   # Random horizontal patrolling
   _horizontalPatrol: ()->
@@ -55,7 +55,7 @@ Crafty.c "VerticalPatrol",
     @speed = speed
 
   patrolFrames: (frames)->
-    @patrolFrames = frames
+    @framesToPatrol = frames
 
   _verticalPatrol: ()->
     # Random vertical patrolling
@@ -69,6 +69,47 @@ Crafty.c "VerticalPatrol",
       @countY--
       if @countY <= 0
         @switchDirY = 0
+    return
+
+# I tried to reuse the Horizontal and Vertical patrol components, but the way
+# they update does not work with the way our animation is update.
+Crafty.c "DiagonalPatrol",
+  Directions:
+    DownRight: { x: 1, y: 1}
+    DownLeft:  { x: -1, y: 1}
+    UpRight:   { x: 1, y: -1}
+    UpLeft:    { x: -1, y: -1}
+
+  init: ()->
+    @framesToPatrol = 25
+    @speed = 1
+    @count = 0
+    @switchDir = 0
+    @patrolDir = @Directions.DownRight
+
+    @bind "EnterFrame", @_patrolBoth
+
+  patrolSpeed: (speed)->
+    @speed = speed
+
+  patrolFrames: (frames)->
+    @framesToPatrol = frames
+
+  _patrolBoth: ()->
+    newX = newY = 0
+    if @switchDir == 0
+      @count += 1
+      newX = @_x + @patrolDir.x
+      newY = @_y + @patrolDir.y
+      if @count >= @framesToPatrol
+        @switchDir = 1
+    else
+      @count -= 1
+      newX = @_x - @patrolDir.x
+      newY = @_y - @patrolDir.y
+      if @count <= 0
+        @switchDir = 0
+    @attr { x: newX, y: newY }
     return
 
 # Component representing the animations and necessary state for animations of

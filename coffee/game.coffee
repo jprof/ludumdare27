@@ -56,10 +56,10 @@ window.Game =
       crate  = Crafty.e "Obstacle, CrateSprite"
       crate.attr { x: 600, y:400 , w: 75, h: 75 }
 
-      enemy = Crafty.e "Enemy, Soldier, VerticalPatrol"
+      enemy = Crafty.e "Enemy, Soldier, DiagonalPatrol"
       enemy.attr { x: 305, y: 305, w: 46, h: 63 }
-      enemy.patrolSpeed 2
-      enemy.patrolFrames 100
+      enemy.patrolSpeed 1
+      enemy.patrolFrames 10
 
       timer = Crafty.e "Timer"
       timer.attr { x: 800 - 70, y: 20, w: 200, h:100 }
