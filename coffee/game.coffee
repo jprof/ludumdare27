@@ -9,7 +9,7 @@ window.Game =
     })
 
     Crafty.sprite(46, 63, 'assets/images/soldier.png', {
-      Soldier: [0, 0]
+      SoldierSprite: [0, 0]
     })
 
     Crafty.sprite(121, 50, 'assets/images/choppa.png', {
