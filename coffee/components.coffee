@@ -144,3 +144,10 @@ Crafty.c 'Title',
 
     return @
 
+Crafty.c 'GameBG',
+  init: ()->
+    @requires '2D, Canvas, Image'
+    @attr { x: 0, y: 0, w: 800, h: 600 }
+    @image 'assets/images/grass.png'
+    return @
+

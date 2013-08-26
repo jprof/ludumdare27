@@ -3,7 +3,6 @@ window.Game =
   STAGE_HEIGHT: 600
   start: ()->
     Crafty.init Game.STAGE_WIDTH, Game.STAGE_HEIGHT
-    Crafty.background "green"
 
     Crafty.sprite(46, 63, 'assets/images/arnold.png', {
       HeroSprite:[0, 0]
@@ -36,6 +35,8 @@ window.Game =
     Crafty.scene "load"
 
     Crafty.scene "main", () ->
+      bg = Crafty.e "GameBG"
+
       player = Crafty.e "Player"
       player.attr { x: 10, y: 10, w: 46, h:63 }
       player.fourway 2
@@ -67,6 +68,10 @@ window.Game =
       timer.textFont { family: "Arial", size: "20px" }
       timer.textColor "red"
 
+      timerBG = Crafty.e "2D, DOM, Color"
+      timerBG.color 'white'
+      timerBG.attr { x: timer._x, y: timer._y, w: 50, h: 25, z: -10 }
+
       mouseClickListener = Crafty.e "ViewportMouseListener"
       mouseClickListener.attr {x: 0, y:0, w: Game.STAGE_WIDTH, h: Game.STAGE_HEIGHT}
       mouseClickListener.bind 'Click', (e) ->
@@ -78,10 +83,4 @@ window.Game =
                                  [0, Game.STAGE_HEIGHT]
       return
 
-    # Load assets here! Something like this:
-    #  Crafty.sprite(100, 100, 'assets/img/building1.gif', {
-    #    building1: [0, 0]
-    #  })
-
-    #Crafty.scene "main"
 
