@@ -44,15 +44,11 @@ window.Game =
       choppa = Crafty.e "Goal, Choppa"
       choppa.attr { x: 400, y: 400, w: 121, h: 52 }
 
-      enemy1 = Crafty.e "Enemy, Soldier"
+      enemy1 = Crafty.e "Enemy, Soldier, VerticalPatrol"
       enemy1.attr { x: 300, y: 20, w: 46, h: 63 }
-      moveEnemy = ()-> enemy1.verticalPatrol enemy1.y
-      enemy1.bind "EnterFrame", moveEnemy
 
-      enemy2 = Crafty.e "Enemy, Soldier"
+      enemy2 = Crafty.e "Enemy, Soldier, HorizontalPatrol"
       enemy2.attr { x: 100, y: 50, w: 46, h: 63 }
-      moveEnemy = ()-> enemy2.horizontalPatrol enemy2.x
-      enemy2.bind "EnterFrame", moveEnemy
 
       tree = Crafty.e "Obstacle, TreeSprite"
       tree.attr { x: 200, y: 200, w: 101, h: 104 }
@@ -60,8 +56,10 @@ window.Game =
       crate  = Crafty.e "Obstacle, CrateSprite"
       crate.attr { x: 600, y:400 , w: 75, h: 75 }
 
-      enemy = Crafty.e "Enemy, Soldier"
-      enemy.attr { x: 300, y: 300, w: 46, h: 63 }
+      enemy = Crafty.e "Enemy, Soldier, VerticalPatrol"
+      enemy.attr { x: 305, y: 305, w: 46, h: 63 }
+      enemy.patrolSpeed 2
+      enemy.patrolFrames 100
 
       timer = Crafty.e "Timer"
       timer.attr { x: 800 - 70, y: 20, w: 200, h:100 }
