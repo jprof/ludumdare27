@@ -12,12 +12,12 @@ Crafty.c 'Enemy',
     # Random horizontal patrolling
     #console.log "I'm patrolling horizontally!"
     if @switchDirX == 0
-      @x+=5
+      @x+=1
       @countX++
-      if @countX >= 5
+      if @countX >= 25
         @switchDirX = 1
     else
-      @x-=5
+      @x-=1
       @countX--
       if @countX <= 0
         @switchDirX = 0
