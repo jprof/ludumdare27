@@ -56,6 +56,10 @@ Crafty.c 'Bullet',
 Crafty.c 'Goal',
   init: ()->
     @requires 'Actor'
+    @onHit "Player", @levelWon
+
+  levelWon: ()->
+    Crafty.scene "main"
     return @
 
 Crafty.c 'Choppa',
