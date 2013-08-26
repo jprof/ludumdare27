@@ -96,6 +96,7 @@ Crafty.c 'Timer',
     # You lost!
     #clearInterval @enemyInterval
     @unbind "EnterFrame"
+    Crafty.scene "main"
 
     return @
 
