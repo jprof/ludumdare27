@@ -26,7 +26,20 @@ Crafty.c 'Obstacle',
 Crafty.c 'Bullet',
   init: ()->
     @requires '2D, Canvas, Collision, Color'
+    @penetrating = false
     return @
+
+  # We want to tell a bullet what it can kill. This should make it easy for
+  # bullets fired by the player to only kill enemies and vice versa.
+  kills: (whatIKill)->
+    @onHit whatIKill, @_kill
+
+  _kill: (targets)->
+    for target in targets
+      target.obj.destroy()
+    @destroy()
+    return
+    
 
   fire: (start_x,start_y,target_x,target_y,speed_x,speed_y) ->
     @start_x = start_x
@@ -128,6 +141,7 @@ Crafty.c 'ViewportMouseListener',
     console.log "Target at (" + targX + ","+targY+")"
     bullet = Crafty.e "Bullet"
     bullet.color "white"
+    bullet.kills "Enemy"
     bullet.fire playerCenterX, playerCenterY, targX, targY, 5, 5
 
     return
