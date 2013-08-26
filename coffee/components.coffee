@@ -34,6 +34,11 @@ Crafty.c 'Bullet',
   kills: (whatIKill)->
     @onHit whatIKill, @_kill
 
+  # In the case of the player, we don't want the destory behavior. We want to
+  # to specify the callback, and this looks cleaner.
+  bulletHit: (whatIHit, whatIDo)->
+    @onHit whatIHit, whatIDo
+
   _kill: (targets)->
     for target in targets
       target.obj.destroy()
