@@ -62,9 +62,17 @@ displayGameOver = ()->
 
 displayWinScreen = ()->
   win = Crafty.e "Winner"
+  text = Crafty.e "2D, DOM, Color, Text, Keyboard"
   Crafty("LevelLoader").destroy()
   Crafty("EntityFactory").destroy()
 
+  text.attr { x: 750, y: 10, w: 300, h: 100 }
+  text.textFont { family: "Arial", size: "30px" }
+  text.textColor "white", 1
+  text.css { "font-size": "30px", "font-weight": "bold", "color": "white" }
+  text.text "You got to the Choppa! You win!"
+  text.bind "EnterFrame", ()->
+    text.x -= 2
   # if no keyboard input is received, proceed to main in 10 seconds.
   proceedTimeout = setTimeout proceedToTitle, 10000
 
