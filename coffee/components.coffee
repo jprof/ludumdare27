@@ -77,7 +77,7 @@ Crafty.c 'Goal',
     @onHit "Player", @levelWon
 
   levelWon: ()->
-    Crafty.scene "main"
+    Crafty.scene "NextLevel"
     return @
 
 Crafty.c 'Choppa',
@@ -97,7 +97,7 @@ Crafty.c 'Timer',
       timeLeft = @_getTimeLeft()
       if timeLeft <= 0
         @text "0.0"
-        @levelOver()
+        Crafty.scene "Death"
       else
         d = new Date(timeLeft)
         @text "" + d.getSeconds() + "." + d.getMilliseconds()
@@ -118,7 +118,7 @@ Crafty.c 'Timer',
     # You lost!
     #clearInterval @enemyInterval
     @unbind "EnterFrame"
-    Crafty.scene "main"
+    Crafty.scene "Death"
 
     return @
 
@@ -150,6 +150,16 @@ Crafty.c 'ViewportMouseListener',
     bullet.fire playerCenterX, playerCenterY, targX, targY, 5, 5
 
     return
+
+Crafty.c 'GameOver',
+  init: ()->
+    @requires '2D, DOM, GameOverScreen'
+    @attr { x: 0, y: 0, w: 800, h: 600 }
+
+Crafty.c 'Winner',
+  init: ()->
+    @requires '2D, DOM, WinnerScreen'
+    @attr { x: 0, y: 0, w: 800, h: 600 }
 
 Crafty.c 'Title',
   init: ()->

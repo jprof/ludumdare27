@@ -7,6 +7,7 @@ build:
 	cp -r assets $(OUTDIR)/
 	cp index.html $(OUTDIR)/.
 	coffee --compile --output $(OUTDIR)/lib coffee/
+	cp -r js/* $(OUTDIR)/lib/.
 
 toServer: build
 	scp -r out/* ludumdare@tourian:~/public_html/$(USER)/.
