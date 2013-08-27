@@ -85,7 +85,7 @@ displayTitle = () ->
   title = Crafty.e "Title"
   text = Crafty.e "2D, DOM, Color, Text, Keyboard"
 
-  text.attr { x: 750, y: 10, w: 300, h: 100 }
+  text.attr { x: 750, y: 10, w: 600, h: 100 }
   text.textFont { family: "Arial", size: "30px" }
   text.textColor "white", 1
   text.css { "font-size": "30px", "font-weight": "bold", "color": "white" }
