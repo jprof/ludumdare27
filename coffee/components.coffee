@@ -142,8 +142,8 @@ Crafty.c 'ViewportMouseListener',
     targX = e.x - Crafty.stage.x
     targY = e.y - Crafty.stage.y
 
-    console.log "Clicked the mouse at (" + e.x + ","+e.y+")"
-    console.log "Target at (" + targX + ","+targY+")"
+    #console.log "Clicked the mouse at (" + e.x + ","+e.y+")"
+    #console.log "Target at (" + targX + ","+targY+")"
     bullet = Crafty.e "Bullet"
     bullet.color "white"
     bullet.kills "Enemy"
@@ -174,4 +174,45 @@ Crafty.c 'GameBG',
     @attr { x: 0, y: 0, w: 800, h: 600 }
     @image 'assets/images/grass.png'
     return @
+
+# howOften is how many frames should elapse between targets
+# target is the Crafty selector to shoot at
+# call setup before shoot
+# shoot can be called every frame, but only shoots if the correct number of
+# frames has elapsed since the last shot
+# # color is the color of the bullet, speed is how fast it goes pew pew
+Crafty.c 'TimedShot',
+  init: () ->
+    @frameCount = 0
+    return @
+
+  pewPewSetup: (howOften, target, color, speed) ->
+    @howOften = howOften
+    @target = target
+    @c = color
+    @s = speed
+    return
+
+  _shoot: () ->
+    if frameCount >= howOften
+      centerX = @.x + @.w / 2
+      centerY = @.y + @.h / 2
+      targetX = @target.x + @target.w / 2
+      targetY = @target.y + @target.h / 2
+      b = Crafty.e 'Bullet'
+      b.color = @c
+      b.kills @target
+      b.fire centerX, centerY, targetX, targetY, @s, @s
+      @frameCount = 0
+    else
+      @frameCount++
+   
+    return
+
+  _enterFrame: () ->
+    _shoot()
+    return
+
+
+
 
