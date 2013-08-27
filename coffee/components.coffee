@@ -191,10 +191,28 @@ Crafty.c 'TimedShot',
     @target = target
     @c = color
     @s = speed
+    @bind 'EnterFrame', @_enterFrame
     return
 
-  _shoot: () ->
-    if frameCount >= howOften
+  #  _shoot: () ->
+  #    if frameCount >= howOften
+  #      centerX = @.x + @.w / 2
+  #      centerY = @.y + @.h / 2
+  #      targetX = @target.x + @target.w / 2
+  #      targetY = @target.y + @target.h / 2
+  #      b = Crafty.e 'Bullet'
+  #      b.color = @c
+  #      b.kills @target
+  #      b.fire centerX, centerY, targetX, targetY, @s, @s
+  #      @frameCount = 0
+  #    else
+  #      @frameCount++
+  #   
+  #    return
+
+  _enterFrame: () ->
+    console.log("framecount: " + @frameCount)
+    if @frameCount >= @howOften
       centerX = @.x + @.w / 2
       centerY = @.y + @.h / 2
       targetX = @target.x + @target.w / 2
@@ -206,11 +224,6 @@ Crafty.c 'TimedShot',
       @frameCount = 0
     else
       @frameCount++
-   
-    return
-
-  _enterFrame: () ->
-    _shoot()
     return
 
 
