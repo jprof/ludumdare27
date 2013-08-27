@@ -40,7 +40,7 @@ Crafty.c 'TheHero',
 
     @animate 'moveRight', 0, 0, 1
     @animate 'moveDown', 0, 1, 2
-    @animate 'moveLeft', 0, 0, 1
+    @animate 'moveLeft', 0, 7, 1
     @animate 'moveUp', 0, 2, 2
     @animate 'moveUpRight', 0, 3, 1
     @animate 'moveUpLeft', 0, 4, 1
