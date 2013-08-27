@@ -46,11 +46,11 @@ window.Game =
 
       enemy1 = Crafty.e "Enemy, Soldier, VerticalPatrol, TimedShot"
       enemy1.attr { x: 300, y: 20, w: 46, h: 63 }
-      enemy1.pewPewSetup 30, Crafty("Player"), "red", 10
+      enemy1.pewPewSetup 3, Crafty("Player"), "red", 10
 
-      enemy2 = Crafty.e "Enemy, Soldier, HorizontalPatrol, TimedShot"
+      enemy2 = Crafty.e "Enemy, Soldier, HorizontalPatrol"
       enemy2.attr { x: 100, y: 50, w: 46, h: 63 }
-      enemy2.pewPewSetup 30, Crafty("Player"), "red", 10
+      #enemy2.pewPewSetup 1, Crafty("Player"), "red", 10
 
       tree = Crafty.e "Obstacle, TreeSprite"
       tree.attr { x: 200, y: 200, w: 101, h: 104 }
